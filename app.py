@@ -17,11 +17,11 @@ def get_certificate_info(cert_file):
 
 def get_kube_certificates():
     cert_dir = '/etc/kubernetes/pki'
-    cert_files = {}
+    cert_files = []
     for root, dirs, files in os.walk(cert_dir):
         for file in files:
             if file.endswith(".crt"):  # Sadece .crt uzantılı dosyaları al
-                cert_files[file] = os.path.join(root, file)
+                cert_files.append(os.path.join(root, file))
     return cert_files
 
 @app.route('/')
