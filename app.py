@@ -11,8 +11,8 @@ def get_certificate_info(cert_file):
         cert_data = f.read()
     
     cert = x509.load_pem_x509_certificate(cert_data, default_backend())
-    not_before = cert.not_valid_before
-    not_after = cert.not_valid_after
+    not_before = cert.not_valid_before_utc
+    not_after = cert.not_valid_after_utc
 
     return not_before, not_after
 
@@ -37,4 +37,4 @@ def index():
     return render_template_string("<pre>{{ output }}</pre>", output=output)
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0', port=8080)
