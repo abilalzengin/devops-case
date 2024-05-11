@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import render_template_string
+from flask import Flask, render_template_string
 from cryptography import x509
 from cryptography.hazmat.backends import default_backend
 import os
@@ -18,20 +17,20 @@ def get_certificate_info(cert_file):
 
 def get_kube_certificates():
     cert_dir = '/etc/kubernetes/pki'
-    cert_files = {}
+    cert_files = []
     for root, dirs, files in os.walk(cert_dir):
         for file in files:
-            if file.endswith(".crt"):  # Sadece .crt uzantılı dosyaları al
-                cert_files[file] = os.path.join(root, file)
+            if file.endswith(".crt"):
+                cert_files.append(os.path.join(root, file))
     return cert_files
 
 @app.route('/')
 def index():
     certificates = get_kube_certificates()
     output = ""
-    for cert_name, cert_file in certificates.items():
+    for cert_file in certificates:
         not_before, not_after = get_certificate_info(cert_file)
-        output += f"{cert_name}:\n"
+        output += f"{os.path.basename(cert_file)}:\n"
         output += f"{' '*35}Not Before: {not_before}\n"
         output += f"{' '*35}Not After   : {not_after}\n\n"
     return render_template_string("<pre>{{ output }}</pre>", output=output)
