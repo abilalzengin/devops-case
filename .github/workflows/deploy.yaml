@@ -1,0 +1,30 @@
+name: Deploy to EC2 Kubernetes
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Configure Docker credentials
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}  
+        password: ${{ secrets.DOCKER_PASSWORD }}  
+
+    - name: Tag , Build and Push to Docker Hub
+      env:
+        IMAGE_TAG: ${{ github.sha }}
+
+   
+      run: |
+        echo $IMAGE_TAG > dev-image_tag.txt
+        docker build -t abilalzengin/devops-case:$IMAGE_TAG -f ./Dockerfile .
+        docker push abilalzengin/devops-case:$IMAGE_TAG
