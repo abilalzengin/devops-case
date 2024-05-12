@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-case
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-case
+  template:
+    metadata:
+      labels:
+        app: devops-case
+    spec:
+      containers:
+      - name: devops-case
+        image: abilalzengin/devops-case:dd43f9ebf4965bc1b4cc65424d42ac2175f38beb
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: kubernetes-certs
+          mountPath: /etc/kubernetes/pki
+      volumes:
+      - name: kubernetes-certs
+        hostPath:
+          path: /etc/kubernetes/pki
+      nodeSelector:
+        node-role.kubernetes.io/control-plane: "true"
