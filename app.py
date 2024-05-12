@@ -20,7 +20,7 @@ def get_kube_certificates():
     cert_files = []
     for root, dirs, files in os.walk(cert_dir):
         for file in files:
-            if file.endswith(".crt"):  # Sadece .crt uzantılı dosyaları al
+            if file.endswith(".crt"):
                 cert_files.append(os.path.join(root, file))
     return cert_files
 
