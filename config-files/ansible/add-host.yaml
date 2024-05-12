@@ -7,4 +7,4 @@
     - name: Add host to /etc/hosts
       lineinfile:
         path: /etc/hosts
-        line: 192.168.0.10 example.com
+        line: '192.168.0.10 example.com'
