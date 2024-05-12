@@ -1,0 +1,10 @@
+---
+- name: Add host to /etc/hosts
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Add host to /etc/hosts
+      lineinfile:
+        path: /etc/hosts
+        line: 192.168.0.10 example.com
