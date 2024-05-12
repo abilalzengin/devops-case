@@ -1,0 +1,11 @@
+---
+- name: delete host from /etc/hosts
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: delete host from /etc/hosts
+      lineinfile:
+        path: /etc/hosts
+        state: absent
+        line: '192.168.0.10 example.com'
