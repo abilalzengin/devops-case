@@ -18,6 +18,10 @@ Three alarm rules were created in the Grafana interface using PromQL. The codes 
 
 ![Image Alt text](/images/grafana-rules.png)
 
+Later on, a pod was created with an incorrect image, triggering the 'pod-not-ready' alarm, and it was observed to be functioning. Additionally, it was noted that an email notification was received at the email address defined along with the rule.
+
+![Image Alt text](/images/alarm-firing.png)
+![Image Alt text](/images/e-mail.png)
 
 
 # Infrastructure Design
