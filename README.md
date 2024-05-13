@@ -16,6 +16,8 @@ The nodes and other components were displayed in the Grafana interface.
 
 Three alarm rules were created in the Grafana interface using PromQL. The codes for the rules can be found at https://github.com/abilalzengin/devops-case/tree/main/config-files/prometheus-grafana directory.
 
+![Image Alt text](/images/grafana-rules.png)
+
 
 
 # Infrastructure Design
