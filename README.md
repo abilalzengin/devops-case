@@ -1,4 +1,4 @@
-# Infrastructure Setup
+# 1-Infrastructure Setup
 ## K8s Cluster Installation
 Kubeadm was used to deploy a cluster consisting of 2 nodes on AWS.
 
@@ -24,6 +24,8 @@ Later on, a pod was created with an incorrect image, triggering the 'pod-not-rea
 ![Image Alt text](/images/e-mail.png)
 
 
-# Infrastructure Design
+
+# 2-Infrastructure Design
+Ansible was installed as the configuration management tool. Ansible-related files can be found at https://github.com/abilalzengin/devops-case/tree/main/config-files/ansible directory. In the example 'inventory.txt' file, 'webservers' and 'dbservers' groups were created to include VMs deployed on AWS, with only a total of 3 VMs defined due to limited resources. Subsequently, the 'add-host.yaml' file was executed with the 'ansible-playbook' command to append the line '192.168.0.10 example.com' to the '/etc/hosts' files of VMs in the 'webservers' group. Later, this action was reverted using the 'delete-host.yaml' file. With Ansible, different groupings can be made for thousands of nodes within the same file, or each group can be added to different 'inventory.txt' files, enabling specific configuration settings for specific groups.
 
 # Software Development
