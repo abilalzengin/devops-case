@@ -1,1 +1,1 @@
-kube_node_status_condition{job!="",condition="Ready",status="true"} == 0
+kube_node_status_condition{job!="",condition="NotReady",status="true"} == 0
