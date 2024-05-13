@@ -34,4 +34,14 @@ Ansible was installed as the configuration management tool. Ansible-related file
 
 
 # 3-Software Development
+Python code was written to view the certificates of Kubernetes services and their expiration dates. The code involves fetching the certificates from kube-master, decrypting the encrypted certificate contents to find the desired information, and displaying this information on the screen. The code was pushed to a GitHub repository, and a Dockerfile was written for Docker operations on the image. The python-slim image was used to reduce the size of the image. A GitHub Actions workflow file was created for CI/CD processes. Due to security requirements, sensitive contents were defined as secrets in the file. The file can be found at https://github.com/abilalzengin/devops-case/blob/main/config-files/cicd-pipeline/github-actions-deploy.yaml. The CI/CD process was executed to build the image, and the resulting image was automatically deployed in our Kubernetes cluster. The application output was displayed by entering the port over the server IP via the created deployment and service for the application. The K8s deployment file can be found at https://github.com/abilalzengin/devops-case/blob/main/config-files/k8s/deployment.yaml .
+
+![Image Alt text](/images/k8s-app-pod.png)
+![Image Alt text](/images/k8s-app-screen.png)
+
+
+
+
+ 
+
 
