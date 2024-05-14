@@ -36,7 +36,7 @@ Ansible was installed as the configuration management tool. Ansible-related file
 
 ![Image Alt text](/images/ansible-delete-host.png)
 
-![Image Alt text](/images/ansible.png)
+![Image Alt text](/images/ansible1.png)
 
 
 # 3-Software Development
